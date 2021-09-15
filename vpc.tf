@@ -6,8 +6,8 @@ module "vpc" {
 
   azs = var.azs
   public_subnets = var.vpc_public_subnets_cidrs
-  private_subnets = var.vpc_private_subnets_cidrs
 
+  # to allow RDS be publicly accessible
   enable_dns_hostnames = true
 
   tags = {

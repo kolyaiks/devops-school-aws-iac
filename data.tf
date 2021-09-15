@@ -1,5 +1,3 @@
-data "aws_availability_zones" "azs" {}
-
 data "aws_ami" "latest_amazon_linux_2" {
   owners = [
     "137112412989"]

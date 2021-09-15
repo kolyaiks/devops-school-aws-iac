@@ -38,14 +38,6 @@ variable "vpc_public_subnets_cidrs" {
     "192.168.2.0/24"]
 }
 
-variable "vpc_private_subnets_cidrs" {
-  description = "List of private subnets' CIDRs"
-  type = list(string)
-  default = [
-    "192.168.11.0/24",
-    "192.168.22.0/24"]
-}
-
 variable "owner_email" {
   description = "Owner email"
   type = string
@@ -73,7 +65,7 @@ variable "ssh_key_name" {
 variable "wordpress_server_max_size" {
   description = "Maximum of WP servers in ASG"
   type = number
-  default = 1
+  default = 2
 }
 
 variable "wordpress_server_min_size" {
@@ -85,7 +77,7 @@ variable "wordpress_server_min_size" {
 variable "wordpress_server_desired_capacity" {
   description = "Desired capacity of WP servers in ASG"
   type = number
-  default = 1
+  default = 2
 }
 
 variable "ssh_inbound_list_allowed" {
@@ -102,6 +94,12 @@ variable "db_instance_type" {
 
 variable "db_multi_az"  {
   description = "Need multi AZ for RDS?"
+  type = bool
+  default = false
+}
+
+variable "db_publicly_accessible"  {
+  description = "Need public access to RDS?"
   type = bool
   default = false
 }

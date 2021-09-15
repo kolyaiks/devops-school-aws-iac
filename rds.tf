@@ -2,9 +2,8 @@ module "db" {
   source = "terraform-aws-modules/rds/aws"
   version = "~> 3.0"
 
-  //TODO: delete external access
-  publicly_accessible = true
-  identifier = "wordpress-${var.company_name}"
+  publicly_accessible = var.db_publicly_accessible
+  identifier = "wordpress-db-${var.company_name}"
 
   engine = "mysql"
   engine_version = "5.7.19"
@@ -24,16 +23,10 @@ module "db" {
   multi_az = var.db_multi_az
 
   vpc_security_group_ids = [
-    aws_security_group.rds_sg.id]
+    aws_security_group.ec2_to_rds_sg.id]
 
   maintenance_window = "Mon:00:00-Mon:03:00"
   backup_window = "03:00-06:00"
-
-  # Enhanced Monitoring - see example for details on how to create the role
-  # by yourself, in case you don't want to create it automatically
-//  monitoring_interval = "30"
-//  monitoring_role_name = "MyRDSMonitoringRole"
-//  create_monitoring_role = true
 
   tags = {
     owner = var.owner_email
@@ -62,21 +55,4 @@ module "db" {
       value = "utf8mb4"
     }
   ]
-
-//  options = [
-//    {
-//      option_name = "MARIADB_AUDIT_PLUGIN"
-//
-//      option_settings = [
-//        {
-//          name = "SERVER_AUDIT_EVENTS"
-//          value = "CONNECT"
-//        },
-//        {
-//          name = "SERVER_AUDIT_FILE_ROTATIONS"
-//          value = "37"
-//        },
-//      ]
-//    },
-//  ]
 }
