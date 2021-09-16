@@ -19,17 +19,24 @@ module "alb" {
       backend_port = 80
       target_type = "instance"
       health_check = {
-        enabled             = true
-        interval            = 10
-        path                = "/"
-        port                = "traffic-port"
-        healthy_threshold   = 3
+        enabled = true
+        interval = 10
+        path = "/"
+        port = "traffic-port"
+        healthy_threshold = 3
         unhealthy_threshold = 3
-        timeout             = 5
-        protocol            = "HTTP"
-        matcher             = "200"
+        timeout = 5
+        protocol = "HTTP"
+        matcher = "200"
+      }
+      # to be able to auth to /wp-admin and don't face with redirect to another server
+      stickiness = {
+        enabled = true
+        cookie_duration = 60
+        type = "lb_cookie"
       }
     }
+
   ]
 
   http_tcp_listeners = [

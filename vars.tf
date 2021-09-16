@@ -59,7 +59,6 @@ variable "wordpress_server_role_name" {
 variable "ssh_key_name" {
   description = "SSH key name"
   type = string
-  default = "kolyaiks_iam"
 }
 
 variable "wordpress_server_max_size" {

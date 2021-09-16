@@ -1,0 +1,1 @@
+ssh_key_name = "kolyaiks_iam"

@@ -47,7 +47,7 @@ resource "aws_autoscaling_group" "wordpress_server_asg" {
   desired_capacity = var.wordpress_server_desired_capacity
 
   health_check_type = "ELB"
-  health_check_grace_period = 90
+  health_check_grace_period = 120
 
   tag {
     key = "Name"
