@@ -1,6 +1,7 @@
 # Final AWS task for DevOps school
 Terraform script of this repo is intended to spin up the infrastructure described below.
 ![Alt text](infra.png?raw=true)
+
 You must have an access key and secret key for the user with appropriate rights.
 Use the command below to set environment variables before launching Terraform script:
 ```
