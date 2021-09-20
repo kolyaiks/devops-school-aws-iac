@@ -15,3 +15,4 @@ Finally, you can run the command below to spin up infrastructure:
 terraform apply -var-file=optional.tfvars
 ```
 You'll get the alb_dns variable as the output of this script, and this is the DNS name of the ALB. You can use the value of this variable to access WordPress.
+Video description available (RUS): [link to Youtube](https://www.youtube.com/watch?v=hR2Y9peORDk) 
